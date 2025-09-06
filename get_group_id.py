@@ -1,13 +1,13 @@
-# get_group_id.py
+import os
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
-import os
 
 app = Flask(__name__)
 
 LINE_CHANNEL_ACCESS_TOKEN = "UXbkRhFPsKjNCkwGOvbF8pctURapd3sv2aHfn2jyJL6nikPPRVJSDzQoB8Crw1rTA/Gil9KM4R2CNhZsm/jHhlCef5zZwma/SSCknzKXHhDBePqpHzxoxrcSYpv2K8KN7xrA7cLAjOQ8kL74yrWGEwdB04t89/1O/w1cDnyilFU="
 LINE_CHANNEL_SECRET = "3dbf05dbaded06a1819b3b4dbeea62a8"
+
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
@@ -32,4 +32,6 @@ def handle_message(event):
         )
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port)
+
