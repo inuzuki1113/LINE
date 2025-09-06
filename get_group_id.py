@@ -809,7 +809,6 @@ songs = [
 "ヘ調の協奏曲 第3楽章"
 "ロシア民謡メドレー"
 "おおブレネリ"
-
 ]
 
 def send_line_message(song):
